@@ -22,5 +22,12 @@
       }
     }
   },
-  "projects": {}
+  "projects": {
+    "app": {
+      "tags": []
+    },
+    "books": {
+      "tags": []
+    }
+  }
 }
