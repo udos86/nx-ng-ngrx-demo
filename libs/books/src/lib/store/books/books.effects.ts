@@ -13,7 +13,12 @@ export class BooksEffects {
       fetch({
         run: (action) => {
           // Your custom service 'load' logic goes here. For now just return a success action...
-          return BooksActions.loadBooksSuccess({ books: [] });
+          return BooksActions.loadBooksSuccess({
+            books: [
+              { id: '1', title: '1984', author: 'George Orwell' },
+              { id: '2', title: 'Brave New World', author: 'Aldous Huxley' }
+            ]
+          });
         },
 
         onError: (action, error) => {
@@ -24,5 +29,5 @@ export class BooksEffects {
     )
   );
 
-  constructor(private actions$: Actions) {}
+  constructor(private actions$: Actions) { }
 }

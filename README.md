@@ -1,12 +1,19 @@
 # NxNgNgrxDemo
 
+## Feature State Library
+
 * `ng g @nrwl/angular:lib books`
 * `ng g @nrwl/angular:ngrx books --module=libs/books/src/lib/books.module.ts --directory store/books --defaults --facade`
-* Rename `BooksEntity` to `Book`
-* Rename `BOOKS_FEATURE_KEY` to `booksFeatureKey` 
+* rename `BooksEntity` to `Book`
+* rename `BOOKS_FEATURE_KEY` to `booksFeatureKey` 
 * `ng generate @ngrx/schematics:entity Book --project books --module books.module.ts --flat false`
-* Copy generated entitity actions
-* Copy generated reducer functions
-* Rename `booksAdapter` to `adapter`
-* Reformat misgenerated lines of code
-* Delete `book` folder
+* copy generated entitity actions
+* copy generated reducer functions
+* rename `booksAdapter` to `adapter`
+* reformat all misgenerated lines of code
+* delete `book` folder
+
+## App State
+
+* `ng g @nrwl/angular:ngrx app --module=apps/app/src/app/app.module.ts --root`
+* import `BooksModule`

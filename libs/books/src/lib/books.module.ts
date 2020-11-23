@@ -5,14 +5,12 @@ import { EffectsModule } from '@ngrx/effects';
 import * as fromBooks from './store/books/books.reducer';
 import { BooksEffects } from './store/books/books.effects';
 import { BooksFacade } from './store/books/books.facade';
-import * as fromBook from './book/book.reducer';
 
 @NgModule({
   imports: [
     CommonModule,
     StoreModule.forFeature(fromBooks.booksFeatureKey, fromBooks.reducer),
-    EffectsModule.forFeature([BooksEffects]),
-    StoreModule.forFeature(fromBook.booksFeatureKey, fromBook.reducer),
+    EffectsModule.forFeature([BooksEffects])
   ],
   providers: [BooksFacade],
 })
