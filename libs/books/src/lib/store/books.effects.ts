@@ -16,11 +16,11 @@ export class BooksEffects {
           return BooksActions.loadBooksSuccess({
             books: [
               { id: '1', title: '1984', author: 'George Orwell' },
-              { id: '2', title: 'Brave New World', author: 'Aldous Huxley' }
+              { id: '2', title: 'Brave New World', author: 'Aldous Huxley' },
+              { id: '3', title: 'Infinite Jest', author: 'David Foster Wallace' }
             ]
           });
         },
-
         onError: (action, error) => {
           console.error('Error', error);
           return BooksActions.loadBooksFailure({ error });

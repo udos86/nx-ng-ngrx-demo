@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-ng-ngrx-demo/books": ["libs/books/src/index.ts"]
+      "@nx-ng-ngrx-demo/books": ["libs/books/src/index.ts"],
+      "@nx-ng-ngrx-demo/router": ["libs/router/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

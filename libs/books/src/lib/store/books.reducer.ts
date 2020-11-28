@@ -35,32 +35,35 @@ const booksReducer = createReducer(
     (state, { error }) => ({ ...state, error })
   ),
   on(BooksActions.addBook,
-    (state, action) => adapter.addOne(action.book, state)
-  ),
-  on(BooksActions.upsertBook,
-    (state, action) => adapter.upsertOne(action.book, state)
+    (state, { book }) => adapter.addOne(book, state)
   ),
   on(BooksActions.addBooks,
-    (state, action) => adapter.addMany(action.books, state)
+    (state, { books }) => adapter.addMany(books, state)
+  ),
+  on(BooksActions.upsertBook,
+    (state, { book }) => adapter.upsertOne(book, state)
   ),
   on(BooksActions.upsertBooks,
-    (state, action) => adapter.upsertMany(action.books, state)
+    (state, { books }) => adapter.upsertMany(books, state)
   ),
   on(BooksActions.updateBook,
-    (state, action) => adapter.updateOne(action.book, state)
+    (state, { book }) => adapter.updateOne(book, state)
   ),
   on(BooksActions.updateBooks,
-    (state, action) => adapter.updateMany(action.books, state)
+    (state, { books }) => adapter.updateMany(books, state)
   ),
   on(BooksActions.deleteBook,
-    (state, action) => adapter.removeOne(action.id, state)
+    (state, { id }) => adapter.removeOne(id, state)
   ),
   on(BooksActions.deleteBooks,
-    (state, action) => adapter.removeMany(action.ids, state)
+    (state, { ids }) => adapter.removeMany(ids, state)
   ),
   on(BooksActions.clearBooks,
     state => adapter.removeAll(state)
   ),
+  on(BooksActions.selectBook,
+    (state, { id }) => ({ ...state, selectedId: id })
+  )
 );
 
 export function reducer(state: State | undefined, action: Action) {

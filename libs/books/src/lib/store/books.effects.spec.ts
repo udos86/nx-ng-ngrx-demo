@@ -26,16 +26,14 @@ describe('BooksEffects', () => {
       ],
     });
 
-    effects = TestBed.get(BooksEffects);
+    effects = TestBed.inject(BooksEffects);
   });
 
   describe('loadBooks$', () => {
     it('should work', () => {
       actions = hot('-a-|', { a: BooksActions.loadBooks() });
 
-      const expected = hot('-a-|', {
-        a: BooksActions.loadBooksSuccess({ books: [] }),
-      });
+      const expected = hot('-a-|', {a: BooksActions.loadBooksSuccess({ books: [] })});
 
       expect(effects.loadBooks$).toBeObservable(expected);
     });

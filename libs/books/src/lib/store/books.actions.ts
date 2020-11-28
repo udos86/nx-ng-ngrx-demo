@@ -2,7 +2,9 @@ import { createAction, props } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
 import { Book } from './books.models';
 
-export const loadBooks = createAction('[Books] Load Books');
+export const loadBooks = createAction(
+  '[Books] Load Books'
+);
 
 export const loadBooksSuccess = createAction(
   '[Books] Load Books Success',
@@ -56,4 +58,9 @@ export const deleteBooks = createAction(
 
 export const clearBooks = createAction(
   '[Book/API] Clear Books'
+);
+
+export const selectBook = createAction(
+  '[Books] Select Book',
+  props<{ id: string | number }>()
 );

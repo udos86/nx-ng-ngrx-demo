@@ -28,6 +28,9 @@
     },
     "books": {
       "tags": []
+    },
+    "router": {
+      "tags": []
     }
   }
 }
