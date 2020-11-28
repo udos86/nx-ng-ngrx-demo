@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot } from '@angular/router';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { navigation } from '@nrwl/angular';
-import { BooksFacade, loadBooks, selectBook } from '@nx-ng-ngrx-demo/books';
+import { BooksFacade, booksNoop, loadBooks, selectBook } from '@nx-ng-ngrx-demo/books';
 import { navigate } from '@nx-ng-ngrx-demo/router';
-import { filter, map, switchMap } from 'rxjs/operators';
+import { filter, map, switchMap, take, tap } from 'rxjs/operators';
 import { DetailComponent } from '../books/detail/detail.component';
 import { RootComponent } from '../books/root/root.component';
 
@@ -22,7 +22,12 @@ export class RouterEffects {
   booksRoot$ = createEffect(() => this.actions$.pipe(
     navigation(RootComponent, {
       run: (route: ActivatedRouteSnapshot) => {
-        return loadBooks();
+        return this.booksFacade.booksLoaded$.pipe(
+          map(loaded => {
+            return loaded ? booksNoop() : loadBooks();
+          }),
+          take(1)
+        );
       },
       onError: (route: ActivatedRouteSnapshot, error: any) => {
         return null;
@@ -36,6 +41,7 @@ export class RouterEffects {
         const id = route.params['id'];
         return this.booksFacade.booksLoaded$.pipe(
           filter(loaded => loaded),
+          take(1),
           switchMap(() => this.booksFacade.bookEntities),
           map(entities => !!entities[id]),
           map(hasBook => {

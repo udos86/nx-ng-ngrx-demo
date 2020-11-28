@@ -63,6 +63,9 @@ const booksReducer = createReducer(
   ),
   on(BooksActions.selectBook,
     (state, { id }) => ({ ...state, selectedId: id })
+  ),
+  on(BooksActions.booksNoop,
+    state => state
   )
 );
 

@@ -64,3 +64,7 @@ export const selectBook = createAction(
   '[Books] Select Book',
   props<{ id: string | number }>()
 );
+
+export const booksNoop = createAction(
+  '[Books] Noop'
+);
