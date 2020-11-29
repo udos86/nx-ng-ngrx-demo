@@ -3,13 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { DetailComponent } from './detail/detail.component';
 import { ListComponent } from './list/list.component';
-import { BookExistsGuard } from './detail/detail.guard';
+import { BookDetailGuard } from './detail/detail.guard';
+import { BooksRootGuard } from './root/root.guard';
 import { RootComponent } from './root/root.component';
 
 const routes: Routes = [
   {
     path: '',
     component: RootComponent,
+    canActivate: [BooksRootGuard],
     children: [
       {
         path: '',
@@ -23,7 +25,7 @@ const routes: Routes = [
       {
         path: 'detail/:id',
         component: DetailComponent,
-        //canActivate: [BookExistsGuard]
+        canActivate: [BookDetailGuard]
       }
     ]
   }

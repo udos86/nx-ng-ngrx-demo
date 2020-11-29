@@ -38,7 +38,7 @@ import { RouterState } from '@ngrx/router-store';
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     BooksStoreModule,
     RouterStoreModule.forRoot({
-      routerState: RouterState.Full
+      routerState: RouterState.Minimal
     }),
   ],
   providers: [],

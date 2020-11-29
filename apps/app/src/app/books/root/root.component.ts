@@ -12,6 +12,14 @@ export class RootComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.booksFacade.dispatch(loadBooks());
+  /* Data fetching on parent component initialization 
+  |--------------------------------------------------
+  |+ easy and obivous approach
+  |- puts data fetching logic into component
+  |- does not consider initial deep url call from the outside and nested routes protected by guards
+  |
+
+    this.booksFacade.dispatch(loadBooks());
+  */
   }
 }

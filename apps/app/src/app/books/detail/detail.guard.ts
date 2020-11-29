@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate } from '@angular/router';
-import { BooksFacade, loadBooks, selectBook } from '@nx-ng-ngrx-demo/books';
+import { BooksFacade, selectBook } from '@nx-ng-ngrx-demo/books';
 import { navigate, RouterFacade } from '@nx-ng-ngrx-demo/router';
 import { Observable, of } from 'rxjs';
 import { filter, map, switchMap, take, tap } from 'rxjs/operators';
@@ -8,17 +8,12 @@ import { filter, map, switchMap, take, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class BookExistsGuard implements CanActivate {
+export class BookDetailGuard implements CanActivate {
 
   constructor(private readonly booksFacade: BooksFacade, private readonly routerFacade: RouterFacade) { }
 
   waitUntilBooksLoaded(): Observable<boolean> {
     return this.booksFacade.booksLoaded$.pipe(
-      tap(loaded => {
-        if (!loaded) {
-          this.booksFacade.dispatch(loadBooks());
-        }
-      }),
       filter(loaded => loaded),
       take(1)
     );
