@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { DetailComponent } from './detail/detail.component';
-import { ListComponent } from './list/list.component';
-import { BookDetailGuard } from './detail/detail.guard';
-import { BooksRootGuard } from './root/root.guard';
-import { RootComponent } from './root/root.component';
+import { DetailComponent } from './components/detail/detail.component';
+import { ListComponent } from './components/list/list.component';
+import { BookDetailGuard } from './guards/detail.guard';
+import { BooksRootGuard } from './guards/root.guard';
+import { RootComponent } from './containers/root/root.component';
 
 const routes: Routes = [
   {

@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 
 import { BooksRoutingModule } from './books-routing.module';
-import { DetailComponent } from './detail/detail.component';
-import { ListComponent } from './list/list.component';
-import { RootComponent } from './root/root.component';
+import { DetailComponent } from './components/detail/detail.component';
+import { ListComponent } from './components/list/list.component';
+import { RootComponent } from './containers/root/root.component';
 
 @NgModule({
   declarations: [

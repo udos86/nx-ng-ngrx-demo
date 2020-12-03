@@ -6,8 +6,8 @@ import { navigation } from '@nrwl/angular';
 import { BooksFacade, booksNoop, loadBooks, selectBook } from '@nx-ng-ngrx-demo/books';
 import { navigate } from '@nx-ng-ngrx-demo/router';
 import { filter, map, switchMap, take, tap } from 'rxjs/operators';
-import { DetailComponent } from '../books/detail/detail.component';
-import { RootComponent } from '../books/root/root.component';
+import { DetailComponent } from '../books/components/detail/detail.component';
+import { RootComponent } from '../books/containers/root/root.component';
 
 @Injectable()
 export class RouterEffects {

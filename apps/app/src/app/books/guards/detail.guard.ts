@@ -10,6 +10,15 @@ import { filter, map, switchMap, take, tap } from 'rxjs/operators';
 })
 export class BookDetailGuard implements CanActivate {
 
+  /* Setting selected entity on guarded router navigation 
+  |--------------------------------------------------
+  |+ uses Angular router core mechanism
+  |+ keeps selecting logic out of component
+  |+ considers initial deep url call (router state is initially undefined)
+  |- partly breaks pure NgRx architecture by not using effect
+  |
+  */
+
   constructor(private readonly booksFacade: BooksFacade, private readonly routerFacade: RouterFacade) { }
 
   waitUntilBooksLoaded(): Observable<boolean> {
@@ -50,7 +59,7 @@ export class BookDetailGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
-    const id = route.params['id'];
+    const id = route.params['id']; // id cannot be retrieved via store initially due to router state being undefined
     return this.waitUntilBooksLoaded().pipe(
       switchMap(() => this.hasBook(id)),
       tap(hasBook => {

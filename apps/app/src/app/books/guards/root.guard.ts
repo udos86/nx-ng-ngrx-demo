@@ -12,7 +12,7 @@ export class BooksRootGuard implements CanActivate {
   /* Data fetching on guarded router navigation 
   |--------------------------------------------------
   |+ uses Angular router core mechanism
-  |+ pulls data fetching logic out of component
+  |+ keeps data fetching logic out of component
   |+ considers initial deep url call 
   |- partly breaks pure NgRx architecture by not using effect
   |

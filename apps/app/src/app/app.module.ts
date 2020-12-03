@@ -30,7 +30,7 @@ import { RouterState } from '@ngrx/router-store';
         metaReducers,
         runtimeChecks: {
           strictActionImmutability: true,
-          strictStateImmutability: false,
+          strictStateImmutability: true,
         },
       }
     ),
